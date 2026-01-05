@@ -1,0 +1,15 @@
+spring:
+  application:
+    name: springboot-salesforce-demo
+
+server:
+  port: 8080
+
+logging:
+  level:
+    root: INFO
+    com.arpit.integration.salesforce: DEBUG
+
+salesforce:
+  api-version: v59.0
+  instance-url: ${SF_INSTANCE_URL}
