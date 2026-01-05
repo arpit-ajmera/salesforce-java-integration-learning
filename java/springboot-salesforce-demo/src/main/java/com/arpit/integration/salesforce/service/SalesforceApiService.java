@@ -8,6 +8,8 @@ import org.springframework.web.client.RestTemplate;
 @Service
 public class SalesforceApiService {
 
+    private boolean useMock = true; // switch to false when real Salesforce ready
+
     private final SalesforceProperties properties;
     private final RestTemplate restTemplate = new RestTemplate();
 
@@ -23,7 +25,9 @@ public class SalesforceApiService {
     }
 
     public String getAccounts() {
-
+        if (useMock) {
+            return "[{\"Id\":\"001xx000003DGbJAAW\",\"Name\":\"Test Account\"}]";
+        }
         String url = getBaseSalesforceUrl()
                 + "/query?q=SELECT+Id,Name+FROM+Account+LIMIT+5";
 
